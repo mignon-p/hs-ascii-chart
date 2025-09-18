@@ -16,7 +16,9 @@ version:             0.1.0.0
 synopsis:            Print a colorized ASCII chart
 
 -- A longer description of the package.
--- description:
+description:
+        Print a chart of all 128 ASCII characters to stderr.
+        Assumes that the terminal supports ANSI color escapes.
 
 -- The license under which the package is released.
 license:             BSD3
@@ -31,8 +33,12 @@ author:              Mignon Pelletier
 -- patches.
 maintainer:          code@funwithsoftware.org
 
+homepage:            https://github.com/mignon-p/hs-ascii-chart
+
+bug-reports:         https://github.com/mignon-p/hs-ascii-chart/issues
+
 -- A copyright notice.
--- copyright:
+copyright:           © Mignon Pelletier, 2024-2025
 
 category:            Development
 
@@ -41,9 +47,18 @@ build-type:          Simple
 -- Extra files to be distributed with the package, such as examples or a
 -- README.
 extra-source-files:  CHANGELOG.md
+                   , README.md
+                   , doc/screenshot.png
 
 -- Constraint on the version of Cabal needed to build this package.
 cabal-version:       >=1.10
+
+tested-with:         GHC==9.6.7
+                   , GHC==9.10.2
+
+source-repository head
+  Type:     git
+  Location: https://github.com/mignon-p/hs-ascii-chart.git
 
 
 executable chart
@@ -65,3 +80,4 @@ executable chart
   -- Base language which the package is written in.
   default-language:    Haskell2010
 
+  ghc-options:         -Wall

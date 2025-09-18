@@ -1,3 +1,17 @@
+#!/usr/bin/env runhaskell
+
+{-|
+Module      : Main
+Description : Print a colorized ASCII chart
+Copyright   : © Mignon Pelletier, 2024-2025
+License     : BSD3
+Maintainer  : code@funwithsoftware.org
+Portability : GHC
+
+Print a chart of all 128 ASCII characters to stderr.
+Assumes that the terminal supports ANSI color escapes.
+-}
+
 import Data.Bits
 import Data.Char
 import Text.Printf
@@ -43,20 +57,20 @@ sgr :: Int -> String
 sgr n = "\27[" ++ show n ++ "m"
 
 fmtTrip :: Bool -> [Int] -> [String] -> String
-fmtTrip even ws trip =
+fmtTrip evenCol ws trip =
   let padded  = padTrip ws trip
       str     = concat $ zipWith (++) fgSgrs padded
       fgSgrs  = map sgr [91, 94, 30]
-      bgStart = sgr $ if even then 107 else 47
+      bgStart = sgr $ if evenCol then 107 else 47
       bgEnd   = sgr 0
   in concat [bgStart, " ", str, " ", bgEnd]
 
 fmtCol :: Int -> [String]
 fmtCol col =
-  let column = mkColumn  col
-      ws     = colWidths column
-      even   = 0 == (col .&. 1)
-  in map (fmtTrip even ws) column
+  let column  = mkColumn  col
+      ws      = colWidths column
+      evenCol = 0 == (col .&. 1)
+  in map (fmtTrip evenCol ws) column
 
 columns :: [[String]]
 columns = map fmtCol [0..7]
