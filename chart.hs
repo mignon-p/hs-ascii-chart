@@ -1,4 +1,3 @@
-import Control.DeepSeq
 import Data.Bits
 import Data.Char
 import Text.Printf
@@ -66,4 +65,4 @@ fmtRow :: Int -> String
 fmtRow row = concatMap (!! row) columns
 
 main :: IO ()
-main = columns `deepseq` mapM_ (putStrLn . fmtRow) [0..15]
+main = mapM_ (putStrLn . fmtRow) [0..15]

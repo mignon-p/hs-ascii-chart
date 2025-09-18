@@ -58,7 +58,6 @@ executable chart
 
   -- Other library packages from which modules are imported.
   build-depends:       base    >= 4.12    && < 5
-                     , deepseq >= 1.4.4.0 && < 1.6
 
   -- Directories containing source files.
   -- hs-source-dirs:
