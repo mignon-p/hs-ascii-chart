@@ -1,5 +1,5 @@
 This program prints a colorized chart of all 128 ASCII characters to
-stderr.  Assumes that the terminal supports ANSI color escapes.
+stdout.  Assumes that the terminal supports ANSI color escapes.
 Assumes the terminal is at least 80 columns wide.
 
 ![Output of chart program](doc/screenshot.png)
